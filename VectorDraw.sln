@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorDraw", "VectorDraw\VectorDraw.csproj", "{C4F623D0-D956-4E15-B87C-71374462D970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorShapes", "VectorShapes\VectorShapes.csproj", "{6DDBDE24-78D3-4629-83DE-3744E6A512F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorShapesTest", "VectorShapesTest\VectorShapesTest.csproj", "{70DF7A1B-9577-4063-A6EE-7F5BC081B71F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4F623D0-D956-4E15-B87C-71374462D970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F623D0-D956-4E15-B87C-71374462D970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F623D0-D956-4E15-B87C-71374462D970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F623D0-D956-4E15-B87C-71374462D970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDBDE24-78D3-4629-83DE-3744E6A512F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDBDE24-78D3-4629-83DE-3744E6A512F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDBDE24-78D3-4629-83DE-3744E6A512F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDBDE24-78D3-4629-83DE-3744E6A512F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70DF7A1B-9577-4063-A6EE-7F5BC081B71F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DF7A1B-9577-4063-A6EE-7F5BC081B71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70DF7A1B-9577-4063-A6EE-7F5BC081B71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70DF7A1B-9577-4063-A6EE-7F5BC081B71F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
