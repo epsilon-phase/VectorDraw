@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace VectorShapes
         public Color OutlineColor { get; set; }
         public void Draw(RgbRasterImage img, float xscale, float yscale)
         {
+            HashSet<Point> drawnAlready=new HashSet<Point>();
             //reset each drawing
             if(LogCrossover)
                 Crossovers.Clear();
@@ -53,6 +55,11 @@ namespace VectorShapes
                 {
                     Crossovers.Add(q);
                 }
+                if (ThatThing != null)
+                {
+                    if (drawnAlready.Add(q))
+                        ThatThing(q);
+                }
                 //finally get around to setting the pixel
                 img[q] = OutlineColor;
                 //Store the previous result allowing distance to be calculated and stabilized.
@@ -60,6 +67,10 @@ namespace VectorShapes
             }
         }
 
+        public delegate void OnPointTraced(Point f);
+
+        public OnPointTraced ThatThing = null;
+        
         public void AddPoint(PointF a)
         {
             ControlPoints.Add(a);

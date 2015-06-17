@@ -115,43 +115,43 @@ namespace VectorShapes
             float s = a.X - b.X, z = a.Y - b.Y;
             return (float) Math.Sqrt(s*s + z*z);
         }
+
+        public static float LegitDistance(int x0, int y0, int x1, int y1)
+        {
+            float s = x0 - x1, z = y0 - y1;
+            return (float) Math.Sqrt(s*s + z*z);
+        }
         public static Point ScalePoint(PointF a, float xs, float ys)
         {
             return new Point(){X=(int)Math.Round(a.X*xs),Y=(int)Math.Round(a.Y*ys)};
         }
-
-        public static void DrawLine(RgbRasterImage img, int x0, int y0, int x1, int y1, Color lc)
+        
+        public static void DrawLine(RgbRasterImage img,int x0, int y0, int x1, int y1,Color foreground,bool alternate=false)
         {
-
-            bool steep = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
-            if (steep)
+            Func<float, Point> line = t =>
             {
-                Swap(ref x1,ref y1);
-                Swap(ref x0,ref y0);
-            }
-            if (x1 < x0)
+                var x = (1.0f - t)*x0 + t*x1;
+                var y = (1.0f - t)*y0 + t*y1;
+                return new Point((int)Math.Round(x),(int)Math.Round(y));
+            };
+            bool alternated = false;
+            var c = LegitDistance(x0, y0, x1, y1);
+            Point old = Point.Empty;
+            for (float z = 0.0f; z <= 1.0; z += 1.0f/c)
             {
-                Swap(ref x0,ref x1);
-                Swap(ref y0,ref y1);
-            }
-            float dx = x1 - x0;
-            float dy = Math.Abs(y1 - y0);
-            float error = dx/2.0f;
-            int ystep = (y0 < y1) ? 1 : -1;
-            int y = y1;
-            for (int x = x0; x < x1; x++)
-            {
-                if (steep)
-                    img[y, x] = lc;
-                else
-                    img[x, y] = lc;
-                error -= dy;
-                if (error < 0)
+                var p = line.Invoke(z);
+                if (old != Point.Empty && LegitDistance(old, p) > 1)
+                    c *= 2;
+                if (alternate&&img[p] != Color.Transparent)
                 {
-                    y += ystep;
-                    error += dx;
+                    alternated = !alternated;
+                    //skip to the next pixel
+                    continue;
                 }
+                img[p] = alternated?Color.Transparent:foreground;
+                old = p;
             }
         }
+
     }
 }
